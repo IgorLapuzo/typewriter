@@ -1,0 +1,10 @@
+.header {
+	grid-area: a;
+	background-color: #ccc;
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+}
+
