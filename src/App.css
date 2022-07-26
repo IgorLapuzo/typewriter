@@ -8,8 +8,8 @@
   "a"
   "b";
   grid-template-rows: 60px 1fr;
-  width: 1000px;
-  
+  width: 100%;
+  height: 780px;  
   margin: 0 auto;
 }
 

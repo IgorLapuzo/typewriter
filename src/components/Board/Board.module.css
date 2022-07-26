@@ -1,0 +1,13 @@
+
+
+.board {
+	padding: 10px;
+	position: relative;
+	top: 100px;
+	margin: 0 auto;
+	width: 750px;
+	height: 150px;
+	border: 1px solid #fff;
+	background-color: rgba(255,255,255,0.2);
+
+}

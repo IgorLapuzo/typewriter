@@ -1,6 +1,7 @@
-.main {
+.LessonChoise {
 	grid-area: b;
-	background-color: #fff;
+	height: 100%;
+	background-colour: #66A182
 }
 
 

@@ -1,7 +1,43 @@
+
+
 .main {
 	grid-area: b;
-	background-color: #fff;
+	height: 100%;
+	background-image: url(BG.jpg);
+}
+
+.header {
+	font-family: 'Helvetica', sans-serif;
+	padding-top: 80px;
+	margin-bottom: 80px;
+	font-size: 80px;
+	text-align: center;
+	color: #fff;
+}
+.container {
+ 	display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
 }
 
 
+.buttonWraper {
+	font-family: 'Helvetica', sans-serif;
+	text-align: center;
+	width: 250px;
+	height: 35px;
+	border: 1px solid #fff;
+	margin: 25px;
+	cursor: pointer;
+	padding-top: 15px;
+}
 
+.button {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.buttonWraper:hover {
+	background-color: rgba(255,255,255,0.1);
+}

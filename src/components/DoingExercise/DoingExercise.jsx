@@ -1,11 +1,14 @@
 import React from 'react';
 import clases from './DoingExercise.module.css'
+import Board from './../Board/Board.jsx'
+import Keyboard from './../Keyboard/Keyboard.jsx'
 
 
 const DoingExercise = () => {
-	return <div className = {clases.DoingExercise}>
+	return <div className = {clases.doingExercise}>
 		<div className = {clases.container}>
-			<div>DoingExercise</div>
+			<Board />
+			<Keyboard />
 		</div>
 	</div>
 }

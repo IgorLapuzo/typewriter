@@ -5,6 +5,7 @@ import Main from './components/Main/Main.jsx';
 import LessonChoise from './components/LessonChoise/LessonChoise.jsx';
 import DoingExercise from './components/DoingExercise/DoingExercise.jsx';
 import ResultTable from './components/ResultTable/ResultTable.jsx';
+import Test from './components/Test/Test.jsx';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Route path = '/lesson/*' element = {<LessonChoise />} />
               <Route path = '/exercise/*' element = {<DoingExercise />} />
               <Route path = '/result/*' element = {<ResultTable />} />
+              <Route path = '/test/*' element = {<Test />} />
             </Routes> 
           </div> 
         </div>
@@ -27,5 +29,6 @@ function App() {
     
   );
 }
+
 
 export default App;

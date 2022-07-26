@@ -1,7 +1,11 @@
-.doingExercise {
+.test {
 	grid-area: b;
-	height: 100%;
 	background-color: #66A182;
+}
+
+.container {
+	
+	height: 700px;
 }
 
 
