@@ -11,3 +11,17 @@
 	background-color: rgba(255,255,255,0.2);
 
 }
+
+
+
+.uncompleted {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.current {
+  background-color:rgba(77, 245, 141, 0.959)
+}
+
+.wrong {
+  background-color:rgba(243, 45, 19, 0.7)
+}
