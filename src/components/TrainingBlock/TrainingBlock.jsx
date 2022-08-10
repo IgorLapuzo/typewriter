@@ -1,27 +1,11 @@
 import React from 'react';
-import clases from './TrainingBlock.module.css'
-import Board from './../Board/Board.jsx'
-import Keyboard from './../Keyboard/Keyboard.jsx'
-import { useDispatch, useSelector } from 'react-redux';
 
-
-
-function DoingExercise = (props) => {
-
-	const loadingStatus = useSelector(getLoadingStatus);
-	const dispatch = useDispatch();
-
-
-	return <div className = {clases.doingExercise}>
-		<div className = {clases.container}>
-			<div>
-				<span>Speed:</span>
-				<span>Mistakes:</span>
-			</div>
-			<Board />
-			<Keyboard />
-		</div>
-	</div>
+function TrainingBlock() {
+  return (
+    <body className='row justify-content-center align-items-center' style={{minHeight: '100vh'}}>
+      <div className='col-6 bg-light' style={{minHeight: 'max-content', height: '60vh'}}></div>
+    </body>
+  );
 }
 
-export default DoingExercise;
+export default TrainingBlock;
