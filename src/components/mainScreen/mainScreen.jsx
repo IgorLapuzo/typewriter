@@ -3,14 +3,16 @@ import Header from '../header/header';
 import Message from '../message/message';
 import TrainingBlock from '../trainingBlock/trainingBlock';
 
-const text = 'Пробный текст';
+const text = 'Typing text';
+
+const message = 'Start typing when you\'re ready';
 
 function MainScreen(props) {
   return (
     <React.Fragment>
       <Header />
       <main>
-        <Message>Сообщение</Message>
+        <Message>{message}</Message>
         <TrainingBlock>{text}</TrainingBlock>
       </main>
     </React.Fragment>
