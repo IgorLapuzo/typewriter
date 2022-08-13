@@ -7,10 +7,12 @@ const text = 'Typing text';
 
 const message = 'Start typing when you\'re ready';
 
+const user = 'Igor';
+
 function MainScreen(props) {
   return (
     <React.Fragment>
-      <Header />
+      <Header user={user}/>
       <main>
         <Message>{message}</Message>
         <TrainingBlock>{text}</TrainingBlock>
