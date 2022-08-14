@@ -1,6 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
 export const ActionType = {
+  SET_IS_STARTED: 'training/setIsStarted',
   START_TRAINING: 'training/startTraining',
   RESET_TRAINING: 'training/resetTraining',
   SET_WRONG_SYMBOL: 'training/setWrongSymbol',
@@ -10,6 +11,7 @@ export const ActionType = {
   LOAD_TEXT: 'data/loadText',
 };
 
+export const setIsStarted = createAction(ActionType.SET_IS_STARTED);
 export const startTraining = createAction(ActionType.START_TRAINING);
 export const resetTraining = createAction(ActionType.RESET_TRAINING);
 export const setWrongSymbol = createAction(ActionType.SET_WRONG_SYMBOL);

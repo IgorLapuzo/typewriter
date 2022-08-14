@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { startTraining, resetTraining, setWrongSymbol, increaseMistakes, changeCurrentSymbol, loadText, setMessage } from './action';
+import { setIsStarted, startTraining, resetTraining, setWrongSymbol, increaseMistakes, changeCurrentSymbol, loadText, setMessage } from './action';
 
 
 const initialState = {
@@ -16,6 +16,9 @@ const initialState = {
 
 const reducer = createReducer(initialState, (builder) => {
   builder
+    .addCase(setIsStarted, (state) => {
+      state.isTrainingStarted = true;
+    })
     .addCase(startTraining, (state) => {
       state.isTrainingStarted = true;
       state.startTime = `${new Date()}`;
