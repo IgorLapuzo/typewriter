@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const getResult = (resultType) => {
   switch(resultType) {
     case ResultType.SPEED:
-      return '150 знак/мин';
+      return '150 char/min';
 
     case ResultType.PRECISION:
       return '65%';

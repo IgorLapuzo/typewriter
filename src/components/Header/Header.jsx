@@ -21,13 +21,18 @@ const renderNoAuthNavbar = () => (
 
 function Header(props) {
 
-  const {user} = props;
+  const {user, isMain} = props;
 
 	return (
 		<header className={styles.container}>
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">Typwriter</a>
+          {
+            isMain
+              ? <span className="navbar-brand">Typewriter</span>
+              : <a className="navbar-brand" href="/">Typewriter</a>
+          }
+          
           <div>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {(user && renderAuthNavbar(user)) || renderNoAuthNavbar()}
@@ -41,6 +46,7 @@ function Header(props) {
 
 Header.propTypes = {
   user: PropTypes.string,
+  isMain: PropTypes.bool.isRequired,
 };
 
 export default Header;
