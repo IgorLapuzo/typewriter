@@ -8,9 +8,10 @@ const initialState = {
   wrongSymbolNumber: null,
   startTime: null,
   mistakesCount: 0,
-  trainingText: '',
-  messageText: 'Начните печатать, когда будете готовы!',
+  trainingText: 'this text from reducer',
+  messageText: 'Start typing when you\'re ready from reducer',
   results: [],
+  user: 'Igor from reducer',
 };
 
 
