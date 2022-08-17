@@ -1,11 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setIsStarted, startTraining, resetTraining, setWrongSymbol, increaseMistakes, changeCurrentSymbol, loadText, setMessage, getSymbolTyped } from './action';
+import { setIsStarted, startTraining, resetTraining, setWrongSymbol, increaseMistakes, changeCurrentSymbol, loadText, setMessage } from './action';
 
 
 const initialState = {
   isTrainingStarted: false,
   currentSymbolNumber: 3,
-  currentSymbolTyped: '',
   wrongSymbolNumber: null,
   startTime: null,
   mistakesCount: 0,
@@ -28,15 +27,12 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(resetTraining, (state) => {
       state.isTrainingStarted = false;
       state.currentSymbolNumber = 0;
-      state.currentSymbolTyped = '';
       state.symbolsTypedCount = 0;
       state.wrongSymbolNumber = null;
       state.startTime = null;
       state.mistakesCount = 0;
     })
-    .addCase(getSymbolTyped, (state, action) => {
-      state.currentSymbolTyped = action.payload;
-    })
+    
     .addCase(setWrongSymbol, (state) => {
       state.wrongSymbolNumber = state.currentSymbolNumber;
     })

@@ -1,26 +1,37 @@
-import React, {useEffect} from "react";
+import React, {useRef, useEffect} from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import { getTrainingStatus, getMessageText } from '../../store/selectors';
-import { setIsStarted, getSymbolTyped } from '../../store/action';
+import { setIsStarted, setWrongSymbol, increaseMistakes, changeCurrentSymbol } from '../../store/action';
 import { checkSymbol } from '../../utils';
 import Header from '../header/header';
 import Message from '../message/message';
+
 import TrainingBlock from '../trainingBlock/trainingBlock';
 
 function MainScreen() {
   const dispatch = useDispatch();
   const trainingStatus = useSelector(getTrainingStatus);
   const message = useSelector(getMessageText);
+  const symbolRef = useRef();
 
   const onKeydown = (evt) => {
     if (!checkSymbol(evt.key)) {
       return;
     }
+    evt.preventDefault();
+
     if (!trainingStatus) {
       dispatch(setIsStarted());
     }
-    dispatch(getSymbolTyped(evt.key));
+
+    if (evt.key === symbolRef.current.textContent) {
+      dispatch(changeCurrentSymbol());
+    } else {
+      dispatch(setWrongSymbol());
+      dispatch(increaseMistakes());
+    }
   };
+
   useEffect(() => {
     document.addEventListener('keydown', onKeydown);
 
@@ -32,7 +43,7 @@ function MainScreen() {
       <Header isMain/>
       <main>
         <Message>{message}</Message>
-        <TrainingBlock />
+        <TrainingBlock currentRef={symbolRef}/>
       </main>
     </React.Fragment>
   );
