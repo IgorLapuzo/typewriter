@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import { resetTraining } from '../../store/action';
 import Button from '../button/button';
-import CurrentResult from '../currentResult/currentResult';
-import { ResultType } from '../../constants';
+import CurrentSpeedResult from '../currentSpeedResult/currentSpeedResult';
 import TrainingText from '../trainingText/trainingText';
 
 function TrainingBlock(props) {
@@ -18,8 +17,8 @@ function TrainingBlock(props) {
       <div className={classNames('col-10', 'col-md-6', styles.wrapper)}>
         <div className={styles.header}>
           <p className={styles.result}>
-            Typing Speed:
-            <CurrentResult className={styles.rate} resultType={ResultType.SPEED}/>
+            Speed:&nbsp;
+            <CurrentSpeedResult className={styles.rate} />
           </p>
           <Button
             className={styles.button}
