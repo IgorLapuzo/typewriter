@@ -4,7 +4,7 @@ import { startTraining, resetTraining, setWrongSymbol, increaseMistakes, changeC
 
 const initialState = {
   isTrainingStarted: false,
-  currentSymbolNumber: 3,
+  currentSymbolNumber: 0,
   wrongSymbolNumber: null,
   startTime: null,
   mistakesCount: 0,

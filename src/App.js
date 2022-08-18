@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path={AppRoutes.ROOT} element = {<MainScreen />} /> 
           <Route path={AppRoutes.LOGIN} element = {<LoginScreen />} /> 
-          <Route path={AppRoutes.RESULT} render={() => <ResultScreen />} />
+          <Route path={AppRoutes.RESULT} element = {<ResultScreen />} />
         </Routes>
       </div>
     </BrowserRouter>

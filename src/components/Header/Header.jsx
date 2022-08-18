@@ -49,7 +49,7 @@ function Header(props) {
 
 Header.propTypes = {
   user: PropTypes.string,
-  isMain: PropTypes.bool.isRequired,
+  isMain: PropTypes.bool,
 };
 
 export default Header;

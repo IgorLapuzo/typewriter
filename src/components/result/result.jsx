@@ -1,11 +1,12 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
-
+import classNames from 'classnames';
+import styles from './result.module.scss';
 import { ResultType } from '../../constants';
 
 
 const MILLISECONDS_IN_MINUTE = 60000;
+const PERCENTS = 100;
 
 const getTypeSpeed = (resultData) => {
   const spendTime = (resultData.end - new Date(resultData.start)) / MILLISECONDS_IN_MINUTE;
@@ -14,6 +15,10 @@ const getTypeSpeed = (resultData) => {
   return Math.round(symbolsCount / spendTime);
 };
 
+const getTypePrecision = (resultData) => {
+	const symbolsCount = resultData.rightSymbols + resultData.mistakes;
+	return Math.round((resultData.rightSymbols / symbolsCount) * PERCENTS);
+};
 
 function Result (props) {
   const {resultType, result, className} = props;
@@ -21,10 +26,10 @@ function Result (props) {
   const getResult = () => {
     switch(resultType) {
       case ResultType.SPEED:
-        return `${getTypeSpeed(result)} знак/мин`;
+        return `${getTypeSpeed(result)} char/min`;
 
       case ResultType.PRECISION:
-        return `${result}%`;
+        return `${getTypePrecision(result)}%`;
 
       default:
         return '';
@@ -32,7 +37,7 @@ function Result (props) {
   };
 
   return (
-    <span className={className}> {getResult()}</span>
+	<span className={classNames(className, styles.item)}> {getResult()}</span>
   );
 }
 
