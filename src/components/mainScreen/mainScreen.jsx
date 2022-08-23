@@ -6,6 +6,7 @@ import { startTraining, setWrongSymbol, increaseMistakes, changeCurrentSymbol } 
 import { checkSymbol } from '../../utils';
 import { AppRoutes } from '../../constants';
 import Header from '../header/header';
+import LoadingScreen from '../loadingScreen/loadingScreen';
 import Message from '../message/message';
 
 import TrainingBlock from '../trainingBlock/trainingBlock';
@@ -15,8 +16,9 @@ function MainScreen() {
   const trainingStatus = useSelector(getTrainingStatus);
   const message = useSelector(getMessageText);
   const currentSymbol = useSelector(getCurrentSymbol);
+  const text = useSelector(getTrainingText);
   const symbolRef = useRef();
-  const textLength = useSelector(getTrainingText).length;
+  
 
   const onKeydown = (evt) => {
     if (!checkSymbol(evt.key)) {
@@ -42,16 +44,22 @@ function MainScreen() {
     return () => document.removeEventListener('keydown', onKeydown);
   }, [trainingStatus]);
 
-  if (currentSymbol === textLength) {
+  if (text && currentSymbol === text.length) {
     return <Navigate to={AppRoutes.RESULT} />;
   }
+
+  const renderMainContent = () => (
+    <React.Fragment>
+      <Message>{message}</Message>
+      <TrainingBlock currentRef={symbolRef}/>
+    </React.Fragment>
+  );
 
   return (
     <React.Fragment>
       <Header isMain/>
       <main>
-        <Message>{message}</Message>
-        <TrainingBlock currentRef={symbolRef}/>
+      {(!text && <LoadingScreen />) || renderMainContent()}
       </main>
     </React.Fragment>
   );

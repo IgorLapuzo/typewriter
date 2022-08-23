@@ -8,7 +8,7 @@ const initialState = {
   wrongSymbolNumber: null,
   startTime: null,
   mistakesCount: 0,
-  trainingText: 'this text from reducer',
+  trainingText: '',
   messageText: 'Start typing when you\'re ready from reducer',
   results: [],
   user: 'Igor from reducer',
