@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { startTraining, resetTraining, setWrongSymbol, increaseMistakes, changeCurrentSymbol, loadText, setMessage } from './action';
+import {startTraining, resetTraining, setWrongSymbol, increaseMistakes, changeCurrentSymbol, loadText, requireAuthorization, logout} from './action';
+import { AuthorizationStatus } from '../constants';
 
 
 const initialState = {
@@ -8,10 +9,11 @@ const initialState = {
   wrongSymbolNumber: null,
   startTime: null,
   mistakesCount: 0,
-  trainingText: '',
+  trainingText: 'bla',
   messageText: 'Start typing when you\'re ready from reducer',
   results: [],
-  user: 'Igor from reducer',
+  authorizationStatus: AuthorizationStatus.UNKNOWN,
+  authInfo: {},
 };
 
 
@@ -42,9 +44,14 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(loadText, (state, action) => {
       state.trainingText = action.payload.slice(0, 1).join(' ');
     })
-    .addCase(setMessage, (state, action) => {
-      state.messageText = action.payload;
+    .addCase(requireAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload.authStatus;
+      state.authInfo = action.payload.authInfo;
     })
+    .addCase(logout, (state) => {
+      state.authorizationStatus = AuthorizationStatus.NO_AUTH;
+      state.authInfo = {};
+    });
 });
 
 export default reducer;

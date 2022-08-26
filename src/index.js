@@ -6,10 +6,12 @@ import App from './App';
 import './index.scss';
 import reducer from './store/reducer';
 import { createAPI } from './services/api';
-import { fetchTrainingText } from './store/apiActions';
+import { fetchTrainingText, checkAuth } from './store/apiActions';
+import { requireAuthorization } from './store/action';
+import { AuthorizationStatus } from './constants';
 
 export const api = createAPI(
-  // () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)),
+  () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)),
 );
 
 const store = configureStore({
@@ -22,6 +24,7 @@ const store = configureStore({
     }),
 });
 
+store.dispatch(checkAuth(true));
 store.dispatch(fetchTrainingText());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

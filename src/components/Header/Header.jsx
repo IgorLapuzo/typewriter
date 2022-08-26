@@ -1,30 +1,45 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import {useSelector} from 'react-redux';
-import { getUser } from '../../store/selectors';
+import { useSelector, useDispatch } from 'react-redux';
+import {Link} from 'react-router-dom';
+import { systemLogout } from '../../store/apiActions';
+import { getUserInfo } from '../../store/selectors';
 import styles from './header.module.scss';
+import { AppRoutes } from '../../constants';
 
-const renderAuthNavbar = (userName) => (
+const renderAuthNavbar = (userName, onLogout) => (
   <React.Fragment>
     <li className={styles.navlink}>
-      <a className="nav-link" href="/">Statistics {userName}</a>
+      <Link className="nav-link" to="/">Statistic {userName}</Link>
     </li>
     <li className={styles.navlink}>
-      <a className="nav-link" href="/">Sign out</a>
+      <Link
+        className="nav-link"
+        onClick={(evt) => {
+          evt.preventDefault();
+          onLogout();
+        }}
+        to={AppRoutes.ROOT}
+      >
+        LogOut
+      </Link>
     </li>
   </React.Fragment>
 );
 
-const renderNoAuthNavbar = () => (
+const renderNoAuthNavbar = (isLogin) => (
   <li className={styles.navlink}>
-    <a className="nav-link" href="/login">Sign in</a>
+    {isLogin || <Link className="nav-link" to={AppRoutes.LOGIN}>logIn</Link>}
   </li>
 );
 
 function Header(props) {
 
-  const {isMain} = props;
-  const user = useSelector(getUser);
+  const {isMain, isLogin} = props;
+  const userInfo = useSelector(getUserInfo);
+  const dispatch = useDispatch();
+
+  const onLogout = () => dispatch(systemLogout());
 
 	return (
 		<header className={styles.container}>
@@ -33,12 +48,12 @@ function Header(props) {
           {
             isMain
               ? <span className="navbar-brand">Typewriter</span>
-              : <a className="navbar-brand" href="/">Typewriter</a>
+              : <Link className="navbar-brand" to={AppRoutes.ROOT}>Typewriter</Link>
           }
           
           <div>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              {(user && renderAuthNavbar(user)) || renderNoAuthNavbar()}
+              {(userInfo.name && renderAuthNavbar(userInfo.name, onLogout)) || renderNoAuthNavbar(isLogin)}
             </ul>
           </div>
         </div>
@@ -48,7 +63,7 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  user: PropTypes.string,
+  isLogin: PropTypes.bool,
   isMain: PropTypes.bool,
 };
 

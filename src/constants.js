@@ -13,6 +13,18 @@ export const Symbols = {
 	OTHER_SYMBOLS: ['.', ',', ' ', '-', '!', '?', ':', '"', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
 };
 
- export const BASE_URLS = {
-	TEXT: 'https://http://localhost:3003'
+export const BASE_URLS = {
+	TEXT: 'http://localhost:3003/text',
+	AUTHORIZATION: 'http://localhost:3003',
+};
+
+export const APIRoute = {
+  LOGIN: '/login',
+  LOGOUT: '/logout',
+};
+
+export const AuthorizationStatus = {
+  AUTH: 'AUTH',
+  NO_AUTH: 'NO_AUTH',
+  UNKNOWN: 'UNKNOWN',
 };
