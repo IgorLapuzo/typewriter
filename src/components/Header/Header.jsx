@@ -48,7 +48,7 @@ function Header(props) {
           {
             isMain
               ? <span className="navbar-brand">Typewriter</span>
-              : <Link className="navbar-brand" to={AppRoutes.ROOT}>Typewriter</Link>
+              : <Link className="navbar-brand" to='/'>Typewriter</Link>
           }
           
           <div>
