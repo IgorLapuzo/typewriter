@@ -43,7 +43,7 @@ const reducer = createReducer(initialState, (builder) => {
       state.currentSymbolNumber = state.currentSymbolNumber + action.payload;
     })
     .addCase(loadText, (state, action) => {
-      state.trainingText = action.payload.slice(0, 1).join(' ');
+      state.trainingText = 'Start typing when ready';
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload.authStatus;

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import {Link} from 'react-router-dom';
+import { resetTraining } from '../../store/action';
 import { systemLogout } from '../../store/apiActions';
 import { getUserInfo } from '../../store/selectors';
 import styles from './header.module.scss';
@@ -48,7 +49,14 @@ function Header(props) {
           {
             isMain
               ? <span className="navbar-brand">Typewriter</span>
-              : <Link className="navbar-brand" to='/'>Typewriter</Link>
+              : (
+                <Link
+                  className="navbar-brand"
+                  to='/'
+                  onClick={() => dispatch(resetTraining())}
+                >
+                  Typewriter
+                </Link>)
           }
           
           <div>
