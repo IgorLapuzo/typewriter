@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { startTraining, resetTraining, setWrongSymbol, increaseMistakes, changeCurrentSymbol, loadText, requireAuthorization, logout, setIsLoading  } from './action';
+import { startTraining, resetTraining, setWrongSymbol, increaseMistakes, changeCurrentSymbol, loadText, requireAuthorization, logout, setIsLoading, setMessage, loadResults  } from './action';
 import { AuthorizationStatus } from '../constants';
 
 
@@ -45,6 +45,9 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(loadText, (state, action) => {
       state.trainingText = 'Start typing when ready';
     })
+    .addCase(setMessage, (state, action) => {
+      state.messageText = action.payload;
+    })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload.authStatus;
       state.authInfo = action.payload.authInfo;
@@ -55,6 +58,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setIsLoading, (state, action) => {
       state.isLoading = action.payload;
+    })
+    .addCase(loadResults, (state, action) => {
+      state.results = action.payload;
     })
 });
 

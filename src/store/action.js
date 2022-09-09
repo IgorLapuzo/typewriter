@@ -12,6 +12,7 @@ export const ActionType = {
   REQUIRE_AUTHORIZATION: 'user/requireAuthorization',
   LOGOUT: 'user/logout',
   SET_IS_LOADING: 'data/setIsLoading',
+  LOAD_RESULTS: 'data/loadResults',
 };
 
 export const startTraining = createAction(ActionType.START_TRAINING);
@@ -42,6 +43,15 @@ export const logout = createAction(ActionType.LOGOUT);
 export const setIsLoading = createAction(ActionType.SET_IS_LOADING, (status) => ({
   payload: status,
 }));
+
+export const setMessage = createAction(ActionType.SET_MESSAGE, (text) => ({
+  payload: text,
+}));
+
+export const loadResults = createAction(ActionType.LOAD_RESULTS, (results) => ({
+  payload: results,
+}));
+
 
 
 

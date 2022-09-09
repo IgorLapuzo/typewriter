@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import MainScreen from './components/mainScreen/mainScreen';
 import LoginScreen from './components/loginScreen/loginScreen';
 import ResultScreen from './components/resultScreen/resultScreen';
+import StatsScreen from './components/statsScreen/statsScreen';
 import styles from './app.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,6 +17,7 @@ function App() {
           <Route path={AppRoutes.ROOT} element = {<MainScreen />} /> 
           <Route path={AppRoutes.LOGIN} element = {<LoginScreen />} /> 
           <Route path={AppRoutes.RESULT} element = {<ResultScreen />} />
+          <Route path={AppRoutes.STATS} element = {<StatsScreen />} />
         </Routes>
         <ToastContainer autoClose={false}/>
       </div>
