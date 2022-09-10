@@ -4,32 +4,16 @@ import classNames from 'classnames';
 import styles from './result.module.scss';
 import { ResultType } from '../../constants';
 
-
-const MILLISECONDS_IN_MINUTE = 60000;
-const PERCENTS = 100;
-
-const getTypeSpeed = (resultData) => {
-  const spendTime = (resultData.end - new Date(resultData.start)) / MILLISECONDS_IN_MINUTE;
-  const symbolsCount = resultData.rightSymbols + resultData.mistakes;
-
-  return Math.round(symbolsCount / spendTime);
-};
-
-const getTypePrecision = (resultData) => {
-	const symbolsCount = resultData.rightSymbols + resultData.mistakes;
-	return Math.round((resultData.rightSymbols / symbolsCount) * PERCENTS);
-};
-
 function Result (props) {
   const {resultType, result, className} = props;
 
   const getResult = () => {
     switch(resultType) {
       case ResultType.SPEED:
-        return `${getTypeSpeed(result)} char/min`;
+        return `${result} char/min`;
 
       case ResultType.PRECISION:
-        return `${getTypePrecision(result)}%`;
+        return `${result}%`;
 
       default:
         return '';
@@ -43,7 +27,7 @@ function Result (props) {
 
 Result.propTypes = {
   resultType: PropTypes.string.isRequired,
-  result: PropTypes.object.isRequired,
+  result: PropTypes.number.isRequired,
   className: PropTypes.string,
 };
 

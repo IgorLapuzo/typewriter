@@ -6,7 +6,7 @@ import App from './App';
 import './index.scss';
 import reducer from './store/reducer';
 import { createAPI } from './services/api';
-import { fetchTrainingText, checkAuth } from './store/apiActions';
+import { checkAuth } from './store/apiActions';
 import { requireAuthorization } from './store/action';
 import { AuthorizationStatus } from './constants';
 
@@ -25,7 +25,7 @@ const store = configureStore({
 });
 
 store.dispatch(checkAuth(true));
-store.dispatch(fetchTrainingText());
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

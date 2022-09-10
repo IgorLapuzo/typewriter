@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTrainingStatus, getMessageText, getTrainingText, getCurrentSymbol, getLoadingStatus } from '../../store/selectors';
 import { startTraining, setWrongSymbol, increaseMistakes, changeCurrentSymbol, setMessage } from '../../store/action';
+import { fetchTrainingText } from '../../store/apiActions';
 import { checkSymbol } from '../../utils';
 import { AppRoutes, MessageTexts } from '../../constants';
 import Header from '../header/header';
@@ -40,6 +41,8 @@ function MainScreen() {
       dispatch(increaseMistakes());
     }
   };
+
+  useEffect(() =>   dispatch(fetchTrainingText()), []);
 
   useEffect(() => {
     dispatch(setMessage(`${!trainingStatus ? MessageTexts.START : ''}`));
